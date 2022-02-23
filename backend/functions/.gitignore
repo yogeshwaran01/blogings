@@ -1,0 +1,11 @@
+# Compiled JavaScript files
+lib/**/*.js
+lib/**/*.js.map
+
+# TypeScript v1 declaration files
+typings/
+
+# Node.js dependency directory
+node_modules/
+
+client_secret_903621101628-milqgr292aim9rm3gunhlktnbag3u0jq.apps.googleusercontent.com.json
