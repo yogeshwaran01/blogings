@@ -8,7 +8,7 @@ export const getAllBlogs = (_: Request, response: Response) => {
         .orderBy('timestamp', 'desc')
         .get()
         .then(data => {
-            let blogs: { id: string; title: any; content: any; timestamp: any; tags: any; }[] = []
+            let blogs: { id: string; title: any; content: any; timestamp: any; tags: any; userName: any}[] = []
             data.forEach(doc => {
                 blogs.push(
                     {
@@ -17,6 +17,7 @@ export const getAllBlogs = (_: Request, response: Response) => {
                         content: doc.data().content,
                         timestamp: doc.data().timestamp,
                         tags: doc.data().tags,
+                        userName: doc.data().userName
                     }
                 )
             })
@@ -95,7 +96,7 @@ export const getAllBlogOfUser = (request: Request, response: Response) => {
         .where('userName', '==', request.params.user)
         .get()
         .then(data => {
-            let blogs: { id: string; title: any; content: any; timestamp: any; tags: any; }[] = []
+            let blogs: { id: string; title: any; content: any; timestamp: any; tags: any; userName: any }[] = []
             data.forEach(doc => {
                 blogs.push(
                     {
@@ -104,6 +105,7 @@ export const getAllBlogOfUser = (request: Request, response: Response) => {
                         content: doc.data().content,
                         timestamp: doc.data().timestamp,
                         tags: doc.data().tags,
+                        userName: doc.data().userName
                     }
                 )
             })
@@ -123,7 +125,7 @@ export const getAllBlogOfAuthUser = (request: Request, response: Response) => {
         .where('userName', '==', request.cred.userName)
         .get()
         .then(data => {
-            let blogs: { id: string; title: any; content: any; timestamp: any; tags: any; }[] = []
+            let blogs: { id: string; title: any; content: any; timestamp: any; tags: any; userName: any}[] = []
             data.forEach(doc => {
                 blogs.push(
                     {
@@ -132,6 +134,7 @@ export const getAllBlogOfAuthUser = (request: Request, response: Response) => {
                         content: doc.data().content,
                         timestamp: doc.data().timestamp,
                         tags: doc.data().tags,
+                        userName: doc.data().userName
                     }
                 )
             })
@@ -140,5 +143,13 @@ export const getAllBlogOfAuthUser = (request: Request, response: Response) => {
         .catch(err => {
             console.error(err)
             return response.status(500).json({ err: 'internal server error' })
+        })
+}
+
+
+export const getBlogbyID = (request: Request, response: Response) => {
+    admin.db.collection('blogs').doc(`${request.params.blogId}`).get()
+        .then(doc => {
+            response.json(doc.data())
         })
 }

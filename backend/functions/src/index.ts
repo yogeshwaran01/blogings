@@ -30,4 +30,6 @@ app.get('/user/:user/blogs', blogRoutes.getAllBlogOfUser)
 app.get('/me', auth, UserRoutes.getCurrenUserDetails)
 app.get('/me/blogs', auth, blogRoutes.getAllBlogOfAuthUser)
 
+app.get('/blog/:blogId', blogRoutes.getBlogbyID)
+
 export const api = functions.https.onRequest(app)
