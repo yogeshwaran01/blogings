@@ -3,6 +3,7 @@ import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 import { Remarkable } from 'remarkable'
+import Spinner from "../components/Spinner"
 
 const md = new Remarkable()
 
@@ -15,13 +16,14 @@ const Create = () => {
     const navigate = useNavigate()
     const [title, setTitle] = useState(" ")
     const [text, setText] = useState(" ");
+    const [isLoading, setLoading] = useState(false)
     useEffect(() => {
         fetchContents()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const fetchContents = async () => {
-        let url = `http://localhost:5001/market-9c3c5/us-central1/api/me`
+        let url = `https://blogings.herokuapp.com/me`
         try {
             let userRes = await axios.get(url)
             await userRes.data
@@ -33,8 +35,9 @@ const Create = () => {
     }
 
     const submitForm = (e) => {
+        setLoading(true)
         e.preventDefault()
-        let url = `http://localhost:5001/market-9c3c5/us-central1/api/blog`
+        let url = `https://blogings.herokuapp.com/blog`
         axios.post(url, {
             title: title,
             content: text,
@@ -67,7 +70,7 @@ const Create = () => {
                         value={text}
                         onChange={(e) => setText(e.target.value)}
                     ></textarea>
-                    <button className="mt-4 w-full bg-gradient-to-br from-green-500 to-pink-600 text-black py-2 rounded-md text-lg tracking-wide">POST</button>
+                    {isLoading ? <Spinner /> : <button className="mt-4 w-full bg-gradient-to-br from-green-500 to-pink-600 text-black py-2 rounded-md text-lg tracking-wide">POST</button>}
                 </form>
                 <article>
                     <h3 className="text-center">Preview</h3>

@@ -25,7 +25,7 @@ const Register = () => {
             confirmPassword: password,
             userName: userName
         }
-        axios.post("http://localhost:5001/market-9c3c5/us-central1/api/register", newUserData)
+        axios.post("https://blogings.herokuapp.com/register", newUserData)
         .then(response => {
             localStorage.setItem('AuthToken', `Bearer ${response.data.token}`)
             localStorage.setItem('isAuth', true)

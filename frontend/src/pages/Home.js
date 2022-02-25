@@ -1,23 +1,27 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import Cards from "../components/Cards"
+import Spinner from "../components/Spinner"
 
 const Home = () => {
 
     const [blogs, setBlogs] = useState([])
+    const [isLoading, setLoading] = useState(true)
 
     useEffect(() => {
         fetchBlogs()
     }, [])
 
-    const fetchBlogs = async() => {
-        let res = await axios.get('http://localhost:5001/market-9c3c5/us-central1/api/blogs')
+    const fetchBlogs = async () => {
+        let res = await axios.get('https://blogings.herokuapp.com/blogs')
         let data = await res.data
+        setLoading(false)
         setBlogs(data)
     }
 
     return (
-        <Cards blogs={blogs} />
+
+        <>{isLoading ? <Spinner /> : <Cards blogs={blogs} />}</>
     )
 }
 

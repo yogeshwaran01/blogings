@@ -1,4 +1,4 @@
-import * as functions from "firebase-functions";
+// import * as functions from "firebase-functions";
 import * as express from 'express'
 import * as cors from 'cors'
 import * as dotenv from 'dotenv'
@@ -32,4 +32,13 @@ app.get('/me/blogs', auth, blogRoutes.getAllBlogOfAuthUser)
 
 app.get('/blog/:blogId', blogRoutes.getBlogbyID)
 
-export const api = functions.https.onRequest(app)
+// export const api = functions.https.onRequest(app)
+
+const PORT: number = parseInt(process.env.PORT as string, 10) || 5000
+
+
+app.listen(PORT, () => {
+    
+})
+
+export default app
