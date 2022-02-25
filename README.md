@@ -2,6 +2,10 @@
 
 It is a full stack blogging Application
 
+## Live App
+
+[Live App](https://blogings.vercel.app/)
+
 ## Stack
 
 ### Backend
@@ -10,7 +14,6 @@ It is a full stack blogging Application
 - Express
 - FireBase
   - FireStore
-  - Functions
   - Authentication
 
 ### Frontend
