@@ -20,7 +20,7 @@ const Login = () => {
             return
         }
 
-        axios.post("http://localhost:5001/market-9c3c5/us-central1/api/login", {
+        axios.post("https://blogings.herokuapp.com/login", {
             email: email,
             password: password
         })

@@ -2,7 +2,7 @@ const Card = ({ date, title, slug, userName, isAuth, id }) => {
     return (
         <div className="py-8 flex flex-wrap md:flex-nowrap">
             <div className="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
-                <span className="font-semibold title-font text-black">{userName}</span>
+                <a href={`/user/${userName}`}><span className="font-semibold title-font text-black">{userName}</span></a>
                 <span className="mt-1 text-black-500 text-sm">{ date }</span>
             </div>
             <div className="md:flex-grow">
