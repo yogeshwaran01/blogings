@@ -34,7 +34,8 @@ app.get('/blog/:blogId', blogRoutes.getBlogbyID)
 
 // export const api = functions.https.onRequest(app)
 
-const PORT = 8000
+const PORT: number = parseInt(process.env.PORT as string, 10) || 5000
+
 
 app.listen(PORT, () => {
     
