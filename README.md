@@ -22,6 +22,73 @@ It is a full stack blogging Application
 - React
 - Tailwindcss
 
+### Project Structure
+
+```
+.
+├── backend
+│   ├── firebase.json
+│   ├── functions
+│   │   ├── app.yaml
+│   │   ├── package.json
+│   │   ├── package-lock.json
+│   │   ├── Procfile
+│   │   ├── src
+│   │   │   ├── helper
+│   │   │   │   └── validators.ts
+│   │   │   ├── index.ts
+│   │   │   ├── interfaces
+│   │   │   │   ├── blog.interface.ts
+│   │   │   │   ├── blogs.interface.ts
+│   │   │   │   └── user.interface.ts
+│   │   │   ├── services
+│   │   │   │   ├── blogs.ts
+│   │   │   │   └── users.ts
+│   │   │   └── util
+│   │   │       ├── admin.ts
+│   │   │       ├── auth.ts
+│   │   │       └── config.ts
+│   │   └── tsconfig.json
+│   └── README.md
+├── demo
+│   └── demo.gif
+├── deploy_backend.sh
+├── frontend
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── public
+│   │   ├── favicon.ico
+│   │   ├── index.html
+│   │   └── robots.txt
+│   ├── README.md
+│   ├── src
+│   │   ├── App.js
+│   │   ├── App.test.js
+│   │   ├── components
+│   │   │   ├── Card.js
+│   │   │   ├── Cards.js
+│   │   │   ├── Footer.js
+│   │   │   ├── Header.js
+│   │   │   ├── Post.js
+│   │   │   └── Spinner.js
+│   │   ├── index.css
+│   │   ├── index.js
+│   │   ├── pages
+│   │   │   ├── Create.js
+│   │   │   ├── Edit.js
+│   │   │   ├── Home.js
+│   │   │   ├── Login.js
+│   │   │   ├── Me.js
+│   │   │   ├── Profile.js
+│   │   │   └── Register.js
+│   │   ├── reportWebVitals.js
+│   │   ├── setupTests.js
+│   │   └── util.js
+│   └── tailwind.config.js
+└── README.md
+
+```
+
 ## Demo
 
 ![demo](./demo/demo.gif)
