@@ -41,6 +41,16 @@ const Edit = () => {
 
     }
 
+    const deletePost = (e) => {
+        e.preventDefault()
+        setLoading(true)
+        let url = `https://blogings.herokuapp.com/blog/${id}`
+        axios.delete(url, {})
+            .then(d => {
+                navigate('/me')
+            })
+    }
+
     const submitForm = (e) => {
         e.preventDefault()
         setLoading(true)
@@ -78,8 +88,9 @@ const Edit = () => {
                             value={text}
                             onChange={(e) => setText(e.target.value)}
                         ></textarea>
-                        {isLoading ? <Spinner /> : <button className="mt-4 w-full bg-gradient-to-br from-green-500 to-pink-600 text-black py-2 rounded-md text-lg tracking-wide">UPDATE</button>}
+                        {isLoading ? <Spinner /> : <><button className="mt-4 w-full bg-gradient-to-br from-green-500 to-pink-600 text-black py-2 rounded-md text-lg tracking-wide">UPDATE</button></>}
                     </form>
+                    <button className="mt-4 w-full bg-gradient-to-br from-green-500 to-pink-600 text-black py-2 rounded-md text-lg tracking-wide" onClick={deletePost}>DELETE</button>
                     <article>
                         <h3 className="text-center">Preview</h3>
                         <div className="prose" dangerouslySetInnerHTML={{ __html: md.render(text) }}>
